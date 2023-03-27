@@ -45,4 +45,12 @@ public class PlayerController : MonoBehaviour
         Vector3 move = forward + strafe;
         characterController.Move(move * moveSpeed);
     }
+
+    private void OnControllerColliderHit(ControllerColliderHit hit)
+    {
+        if(hit.gameObject.tag == "PickUp")
+        {
+            hit.gameObject.GetComponent<PickUpController>().Picked();
+        }
+    }
 }
